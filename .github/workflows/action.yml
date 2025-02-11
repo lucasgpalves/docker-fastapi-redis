@@ -1,0 +1,19 @@
+name: "FastAPI Redis"
+
+on: [push]
+
+jobs:
+    run:
+        name: Run
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                python-version: ["3.12"]
+
+        steps:
+            - name: Set up Repository
+              uses: actions/checkout@v4
+            
+            - name: Docker building
+              run: docker compose up -d --build
